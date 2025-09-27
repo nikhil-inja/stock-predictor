@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.input-container {
+  margin: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #61dafb;
+  color: #282c34;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #61dafb;
+  border-radius: 10px;
+}
+
+.error {
+  color: #ff4d4d;
+  margin-top: 20px;
+}
