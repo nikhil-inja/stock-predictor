@@ -8,8 +8,8 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)
 
-model = joblib.load('../model/stock_model.pkl')
-scaler = joblib.load('../model/scaler.pkl')
+model = joblib.load('model/stock_model.pkl')
+scaler = joblib.load('model/scaler.pkl')
 
 def engineer_features(data):
     """A helper function to create features for the model."""
