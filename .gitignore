@@ -1,0 +1,59 @@
+# 📄 .gitignore
+
+# Python specific
+#--------------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# Virtual environment folders
+.venv/
+venv/
+env/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+
+# Frontend (Node.js / React)
+#--------------------------------
+# Dependency directories
+frontend/node_modules/
+
+# Production build folder
+frontend/build/
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Yarn specific files
+frontend/.pnp/
+frontend/.pnp.js
+frontend/.pnp.loader.js
+
+# Test reports
+frontend/coverage/
+
+
+# Sensitive Information
+#--------------------------------
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+# General / System / Editor
+#--------------------------------
+# macOS generated files
+.DS_Store
+
+# IDE/editor directories
+.vscode/
+.idea/
