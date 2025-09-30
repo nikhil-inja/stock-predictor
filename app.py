@@ -4,12 +4,19 @@ import joblib
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-model = joblib.load('model/stock_model.pkl')
-scaler = joblib.load('model/scaler.pkl')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, 'model', 'stock_model.pkl')
+scaler_path = os.path.join(BASE_DIR, 'model', 'scaler.pkl')
+
+
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 def engineer_features(data):
     """A helper function to create features for the model."""
