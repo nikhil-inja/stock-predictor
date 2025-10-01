@@ -36,3 +36,5 @@ jobs:
         git add model/stock_model.pkl model/scaler.pkl
         git diff --staged --quiet || git commit -m "feat(bot): Retrain model and update artifacts"
         git push origin HEAD:main
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
