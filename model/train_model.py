@@ -8,12 +8,20 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 import joblib
 import warnings
+import os
+import sys
+import json
 
 warnings.filterwarnings('ignore')
 
 # --- 1. Data Acquisition ---
-print("Fetching data for PLTR...")
-ticker = 'PLTR'
+# Allow ticker override via command-line arg or TICKER env var
+default_ticker = 'PLTR'
+if len(sys.argv) > 1:
+    ticker = sys.argv[1].upper()
+else:
+    ticker = os.environ.get('TICKER', default_ticker).upper()
+print(f"Fetching data for {ticker}...")
 start_date = '2020-01-01'
 end_date = '2023-12-31'
 data = yf.download(ticker, start=start_date, end=end_date, auto_adjust=True)
@@ -67,6 +75,26 @@ rmse = np.sqrt(mean_squared_error(y_test, predictions))
 print(f"Model trained with RMSE: ${rmse:.2f}")
 
 # --- 6. Save Artifacts ---
-joblib.dump(model, "model/stock_model.pkl")
-joblib.dump(scaler, "model/scaler.pkl")
-print("Model and scaler have been saved successfully to the 'model/' directory.")
+# Save artifacts relative to this script's directory to avoid FileNotFoundError
+script_dir = os.path.dirname(os.path.abspath(__file__))
+artifacts_dir = os.path.join(script_dir)
+
+# Ensure the artifacts directory exists
+os.makedirs(artifacts_dir, exist_ok=True)
+
+model_path = os.path.join(artifacts_dir, "stock_model.pkl")
+scaler_path = os.path.join(artifacts_dir, "scaler.pkl")
+
+joblib.dump(model, model_path)
+joblib.dump(scaler, scaler_path)
+print(f"Model and scaler have been saved successfully to '{artifacts_dir}'.")
+
+# Save metadata about the trained artifacts so runtime knows what they were trained on
+metadata = {
+    'ticker': ticker,
+    'features': features,
+}
+metadata_path = os.path.join(artifacts_dir, 'metadata.json')
+with open(metadata_path, 'w') as f:
+    json.dump(metadata, f)
+print(f"Saved metadata to {metadata_path}")

@@ -4,13 +4,57 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* Reduce header height so content below is visible */
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-content {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.content-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.result-box {
+  background: #fff;
+  color: #222;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  min-width: 280px;
+}
+
+.chart-container {
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* Ensure chart canvas preserves a 1:1 (square) aspect ratio and fills container */
+.chart-container {
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .input-container {
