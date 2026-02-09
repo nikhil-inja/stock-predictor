@@ -212,18 +212,5 @@ Performance metrics are displayed during training and can be found in the server
 
 Use the `/predict_debug` endpoint to inspect model inputs and identify issues with feature scaling or data processing.
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-**Disclaimer**: This application is for educational and research purposes only. Stock market predictions are inherently uncertain and should not be used as the sole basis for investment decisions.
